@@ -64,11 +64,16 @@ public class AuthPanel extends JPanel {
 
         JButton loginBtn = new JButton("Se connecter");
         loginBtn.setBounds(170, 380, 160, 45);
-        loginBtn.setBackground(new Color(34, 139, 34));
-        loginBtn.setForeground(Color.WHITE);
         loginBtn.setFocusPainted(false);
         loginBtn.setFont(new Font("Arial", Font.BOLD, 14));
         loginBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        loginBtn.setBackground(new Color(109, 209, 109));
+        loginBtn.setForeground(Color.WHITE);
+
+        loginBtn.setOpaque(true);
+        loginBtn.setBorderPainted(false);
+        loginBtn.setContentAreaFilled(true);
+
 
         /* ---------- ACTION DU BOUTON LOGIN ---------- */
         loginBtn.addActionListener(e -> {

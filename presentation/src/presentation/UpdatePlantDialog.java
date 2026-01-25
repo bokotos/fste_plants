@@ -41,6 +41,9 @@ public class UpdatePlantDialog extends JDialog {
         btnSave.setBackground(new Color(100, 149, 237)); // Bleu
         btnSave.setForeground(Color.WHITE);
         btnSave.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        btnSave.setOpaque(true);
+        btnSave.setBorderPainted(false);
+        btnSave.setContentAreaFilled(true);
         
         btnSave.addActionListener(e -> {
             if(validerEtSauvegarder()) {
@@ -54,7 +57,7 @@ public class UpdatePlantDialog extends JDialog {
 
     private void chargerDonneesPlante() {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM plant WHERE id_plant = ?")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM plant WHERE id_plante = ?")) {
             ps.setInt(1, plantId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

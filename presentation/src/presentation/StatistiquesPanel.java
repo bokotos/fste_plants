@@ -83,7 +83,7 @@ public class StatistiquesPanel extends JPanel {
 
         try (Connection conn = DBConnection.getConnection();
              Statement st = conn.createStatement();
-             ResultSet rs = st.executeQuery("SELECT c.nom_categorie, COUNT(p.id_plant) as nb " +
+             ResultSet rs = st.executeQuery("SELECT c.nom_categorie, COUNT(p.id_plante) as nb " +
                                            "FROM categorie c LEFT JOIN plant p ON c.id_categorie = p.id_categorie " +
                                            "GROUP BY c.nom_categorie LIMIT 3")) {
             while (rs.next()) {

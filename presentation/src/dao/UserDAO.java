@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UserDAO {
 	public static String login(String email, String password) {
 	    // Utilisation des backticks ` pour la table user
-	    String sql = "SELECT nom FROM `user` WHERE email = ? AND password = ?";
+	    String sql = "SELECT nom FROM `users` WHERE email = ? AND password = ?";
 	    try {
 	        Connection conn = DBConnection.getConnection();
 	        if (conn != null) {
