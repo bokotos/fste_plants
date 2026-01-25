@@ -10,14 +10,14 @@ public class DBConnection {
     private static Connection conn;
 
     public static Connection getConnection() {
-        String url = "jdbc:mysql://localhost:3306/DBGestion?useUnicode=true&characterEncoding=UTF-8";
+        String url = "jdbc:mysql://localhost:3306/dbgestion?useUnicode=true&characterEncoding=UTF-8";
         String login = "root";
-        String password = "20YB0319@sb85";
+        String password = "Akram_0626613669";
 
         try {
             if (conn == null || conn.isClosed()) {
                 // Utilisation de l'ancien driver correspondant à ton JAR 5.1.14
-                Class.forName("com.mysql.jdbc.Driver"); 
+                Class.forName("com.mysql.cj.jdbc.Driver"); 
                 conn = DriverManager.getConnection(url, login, password);
                 
             }

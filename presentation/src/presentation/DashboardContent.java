@@ -73,7 +73,7 @@ public class DashboardContent extends JPanel {
         JPanel p = createBaseCard("RÉPARTITION PAR CATÉGORIE");
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         try (Connection conn = DBConnection.getConnection();
-             ResultSet rs = conn.createStatement().executeQuery("SELECT c.nom_categorie, COUNT(p.id_plant) FROM categorie c LEFT JOIN plant p ON c.id_categorie = p.id_categorie GROUP BY c.nom_categorie LIMIT 4")) {
+             ResultSet rs = conn.createStatement().executeQuery("SELECT c.nom_categorie, COUNT(p.id_plante) FROM categorie c LEFT JOIN plant p ON c.id_categorie = p.id_categorie GROUP BY c.nom_categorie LIMIT 4")) {
             p.add(Box.createVerticalGlue());
             while(rs.next()) {
                 JLabel l = new JLabel(" ● " + rs.getString(1) + " : " + rs.getInt(2));

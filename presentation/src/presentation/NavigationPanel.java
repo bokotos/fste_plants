@@ -6,6 +6,13 @@ import app.MainFrame;
 
 public class NavigationPanel extends JPanel {
     private MainFrame mainFrame;
+    private JButton activeButton;
+
+    private final Color DEFAULT_BG = new Color(34, 45, 50);
+    private final Color ACTIVE_BG = new Color(27, 160, 133); // green/teal highlight
+    private final Color DEFAULT_TEXT = new Color(200, 200, 200);
+    private final Color ACTIVE_TEXT = Color.WHITE;
+
 
     public NavigationPanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
@@ -41,28 +48,49 @@ public class NavigationPanel extends JPanel {
      */
     private void addMenuButton(JPanel container, String text, String contentName) {
         JButton btn = new JButton(text);
-        
-        // Style du bouton
+
+        // Style du bouton (normal)
         btn.setMaximumSize(new Dimension(250, 50));
         btn.setPreferredSize(new Dimension(250, 50));
         btn.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        btn.setForeground(new Color(200, 200, 200)); // Gris clair/Blanc
-        btn.setBackground(new Color(34, 45, 50)); // Fond fixe identique au panel
-        
-        // Retrait des bordures et effets système
+        btn.setForeground(DEFAULT_TEXT);
+        btn.setBackground(DEFAULT_BG);
+
         btn.setFocusPainted(false);
         btn.setBorderPainted(false);
-        btn.setContentAreaFilled(true); // Garde le fond opaque
+        btn.setContentAreaFilled(true);
         btn.setOpaque(true);
-        
-        // Alignement du texte
+
         btn.setHorizontalAlignment(SwingConstants.LEFT);
         btn.setMargin(new Insets(0, 25, 0, 0));
 
-        // Action : Switch de panel dans le MainFrame
-        btn.addActionListener(e -> mainFrame.showContent(contentName));
+        // ACTION
+        btn.addActionListener(e -> {
+
+            // 🔄 Reset previous active button
+            if (activeButton != null) {
+                activeButton.setBackground(DEFAULT_BG);
+                activeButton.setForeground(DEFAULT_TEXT);
+            }
+
+            // ⭐ Set current as active
+            btn.setBackground(ACTIVE_BG);
+            btn.setForeground(ACTIVE_TEXT);
+            activeButton = btn;
+
+            // 🔁 Switch content
+            mainFrame.showContent(contentName);
+        });
 
         container.add(btn);
-        container.add(Box.createVerticalStrut(2)); // Petit espace entre les boutons
+        container.add(Box.createVerticalStrut(2));
+
+        // 👉 Optional: set DASHBOARD active by default
+        if (activeButton == null && contentName.equals(MainFrame.DASHBOARD)) {
+            btn.setBackground(ACTIVE_BG);
+            btn.setForeground(ACTIVE_TEXT);
+            activeButton = btn;
+        }
     }
+
 }
