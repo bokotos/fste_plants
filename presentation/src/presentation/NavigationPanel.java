@@ -37,7 +37,7 @@ public class NavigationPanel extends JPanel {
         // Ajout des boutons (Sans Statistiques)
         addMenuButton(buttonContainer, "DASHBOARD", MainFrame.DASHBOARD);
         addMenuButton(buttonContainer, "PLANTES", MainFrame.PLANTES);
-        addMenuButton(buttonContainer, "ARROSAGE", MainFrame.ARROSAGE);
+        addMenuButton(buttonContainer, "Export Data", MainFrame.ExportData);
         addMenuButton(buttonContainer, "PARAMETRES", MainFrame.PARAMS);
 
         add(buttonContainer, BorderLayout.CENTER);

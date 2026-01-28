@@ -6,7 +6,7 @@ import presentation.*;
 
 public class MainFrame extends JFrame {
     public static final String ACCUEIL = "ACCUEIL", AUTH = "AUTH", DASHBOARD_VIEW = "DASHBOARD_VIEW";
-    public static final String DASHBOARD = "DASHBOARD", PLANTES = "PLANTES", ARROSAGE = "ARROSAGE", PARAMS = "PARAMS";
+    public static final String DASHBOARD = "DASHBOARD", PLANTES = "PLANTES", ExportData = "Export Data", PARAMS = "PARAMS";
 
     private CardLayout cardLayout, contentLayout;
     private JPanel container, contentContainer;
@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
         
         contentContainer.add(new DashboardContent(), DASHBOARD);
         contentContainer.add(new PlantePanel(), PLANTES);
-        contentContainer.add(new JPanel(), ARROSAGE);
+        contentContainer.add(new ExportUtil(), ExportData);
         contentContainer.add(new JPanel(), PARAMS);
 
         dashboardPanel.add(nav, BorderLayout.WEST);
